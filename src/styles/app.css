@@ -9,8 +9,55 @@
 
 html, body {
 	font-family: 'Roboto', sans-serif;
+	font-size: 120%;
 	font-weight: 300;
-	margin: 1rem;
 	padding: 0;
+	margin: 1em;
+	background-color: #EEE;
+	color: #333;
 }
 
+body > div {
+	margin-top: 1.5rem;
+	background-color: white;
+	box-shadow: 1px 1px 1px #CCC;
+	padding: 0.5em;
+}
+
+input[type="search"] {
+	color: #333;
+	display: block;
+	width: 100%;
+	border: none;
+	background-color: transparent;
+	margin: 0;
+	padding: 0.2em 0.3em;
+	border-bottom: 2px solid #AAA;
+	margin-bottom: 0.6rem;
+}
+
+ul {
+	width: 100%;
+	list-style-type: none;
+}
+li {
+	background-color: #FFF;
+	margin: 0.2rem 0;
+	padding: 0.2em;
+	box-shadow: 1px 1px 1px #CCC;
+}
+li[ng-click]:hover {
+	background-color: #C5CAE9;
+	cursor: pointer;
+}
+
+div h1 {
+	font-size: 120%;
+	font-weight: 300;
+	margin-bottom: 0.5em;
+}
+div > div {
+	margin: 0.2rem;
+	display: flex;
+	align-items: center;
+}
