@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html>
+<!--
+	Make this webpage an AngularJS app by applying ng-app to it.
+	It will use the app with the name WeatherApp as defined in module.js.
+-->
+<html ng-app="WeatherApp">
 <head>
 	<title>Angular in 6 Minuten 40 Sekunden</title>
 
@@ -9,10 +13,39 @@
 	<link rel="stylesheet" type="text/css" href="styles/app.css">
 
 </head>
-<body>
+<!--
+	Apply the MainController to this part of the page.
+-->
+<body ng-controller="MainController">
 
+	<!-- Create a search field and bind its value to the variable "query" in the scope. --> 
+	<input type="search" ng-model="query" placeholder="Search">
 
+	<ul>
+		<!--
+			Create one list item for each place, but filter it by the value of the
+			above entered query (but only search in the name field of each object).
 
+			Also attach a click listener to each item, so the loadWeather() function
+			in the scope will be called and the appropriate place will be passed as a parameter.
+		-->
+		<li ng-repeat="place in places | filter:{name:query}"
+			ng-click="loadWeather(place)">{{ place.name }}</li>
+	</ul>
+
+	<!-- Only show this div if the weather variable is there. -->
+	<div ng-show="weather">
+		<!-- Show some information about the weather retrieved from the api. -->
+		<h1>Weather in {{ weather.name }}</h1>
+		<div>{{ weather.main.temp }}°</div>
+		<div>
+			<!-- Load the appropriate weather icon from the weather api. -->
+			<img ng-src="http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png">
+			{{ weather.weather[0].description}}
+		</div>
+	</div>
+
+	<!-- Include the AngularJS framework and our module. -->
 	<script src="libs/angular.min.js"></script>
 	<script src="scripts/module.js"></script>
 
